@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Tv, Smartphone, Monitor, Wifi, Download, Loader2, RefreshCw, ShoppingCart } from 'lucide-react';
+import { useEffect } from 'react';
+import { Tv, Smartphone, Monitor, Download, Loader2, RefreshCw, ShoppingCart } from 'lucide-react';
 import { useAdmin } from '../contexts/AdminContext';
 
 interface ServicesProps {

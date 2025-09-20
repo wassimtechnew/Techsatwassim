@@ -1,4 +1,3 @@
-import React from 'react';
 import { Award, Users, Headphones, Zap } from 'lucide-react';
 
 interface AboutProps {

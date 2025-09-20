@@ -1,11 +1,7 @@
-import React from 'react';
 import { Star, Quote } from 'lucide-react';
 
-interface TestimonialsProps {
-  language: 'ar' | 'fr';
-}
-
-export default function Testimonials({ language }: TestimonialsProps) {
+export default function Testimonials() {
+  const language = 'fr'; // Default to French
   const content = {
     fr: {
       title: 'Ce que disent nos clients',
