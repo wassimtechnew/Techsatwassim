@@ -1,3 +1,4 @@
+import React from 'react';
 import { Menu, X, Globe, Settings } from 'lucide-react';
 import { useAdmin } from '../contexts/AdminContext';
 
