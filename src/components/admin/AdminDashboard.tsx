@@ -11,6 +11,7 @@ import {
   CheckCircle,
   Plus,
   Trash2,
+  ShoppingCart
 } from 'lucide-react';
 import { useAdmin } from '../../contexts/AdminContext';
 
