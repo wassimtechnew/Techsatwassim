@@ -1,3 +1,4 @@
+import React from 'react';
 import { MessageCircle, CreditCard, Settings, Play } from 'lucide-react';
 
 interface HowItWorksProps {

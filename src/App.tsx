@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -31,7 +31,7 @@ function AppContent() {
       <Services language={language} />
       <About language={language} />
       <HowItWorks language={language} />
-      <Testimonials />
+      <Testimonials language={language} />
       <Contact language={language} />
       <Footer language={language} />
       <WhatsAppButton language={language} />

@@ -1,10 +1,7 @@
+import React from 'react';
 import { Phone, Mail, MapPin } from 'lucide-react';
 
-interface FooterProps {
-  language: 'ar' | 'fr';
-}
-
-export default function Footer({ language }: FooterProps) {
+const Footer: React.FC = () => {
   return (
     <footer className="bg-gray-900 text-white py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -85,4 +82,6 @@ export default function Footer({ language }: FooterProps) {
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

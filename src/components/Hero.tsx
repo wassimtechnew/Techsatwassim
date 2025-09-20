@@ -1,3 +1,4 @@
+import React from 'react';
 import { Play, Shield, Clock, Star } from 'lucide-react';
 
 interface HeroProps {

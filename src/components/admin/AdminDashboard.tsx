@@ -1,17 +1,25 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { 
+  Settings, 
   LogOut, 
+  Save, 
   Edit3, 
   Check, 
   X, 
   Tv, 
+  Smartphone, 
   Monitor, 
+  Wifi,
+  Globe,
+  BarChart3,
+  Users,
   Download,
   AlertCircle,
   CheckCircle,
   Plus,
   Trash2,
-  ShoppingCart
+  ShoppingCart,
+  Image as ImageIcon
 } from 'lucide-react';
 import { useAdmin } from '../../contexts/AdminContext';
 
@@ -31,6 +39,7 @@ export default function AdminDashboard({ language, setLanguage }: AdminDashboard
     updateAndroidBox,
     addAndroidBox,
     deleteAndroidBox,
+    loading 
   } = useAdmin();
 
   const [activeTab, setActiveTab] = useState<'iptv' | 'android'>('iptv');
@@ -599,14 +608,14 @@ export default function AdminDashboard({ language, setLanguage }: AdminDashboard
                           />
                         ) : (
                           <div className="max-w-xs">
-                            {(activeTab === 'iptv' ? (item as any).download_url : (item as any).purchase_url) ? (
+                            {(activeTab === 'iptv' ? item.download_url : (item as any).purchase_url) ? (
                               <a
-                                href={activeTab === 'iptv' ? (item as any).download_url : (item as any).purchase_url}
+                                href={activeTab === 'iptv' ? item.download_url : (item as any).purchase_url}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-blue-600 hover:text-blue-800 text-sm truncate block"
                               >
-                                {activeTab === 'iptv' ? (item as any).download_url : (item as any).purchase_url}
+                                {activeTab === 'iptv' ? item.download_url : (item as any).purchase_url}
                               </a>
                             ) : (
                               <span className="text-gray-400 text-sm">No URL set</span>

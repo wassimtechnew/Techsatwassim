@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, X, Globe, Settings } from 'lucide-react';
+import { Menu, X, Globe, Tv, Settings } from 'lucide-react';
 import { useAdmin } from '../contexts/AdminContext';
 
 interface HeaderProps {
