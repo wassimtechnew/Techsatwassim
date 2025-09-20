@@ -85,3 +85,4 @@ export default function Footer({ language }: FooterProps) {
       </div>
     </footer>
   );
+}
