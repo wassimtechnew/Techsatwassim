@@ -176,20 +176,11 @@ export default function AndroidBoxes({ language }: AndroidBoxesProps) {
     try {
       setLoading(boxId);
       
-      // Load Stripe
-      const stripe = await import('@stripe/stripe-js').then(module => 
-        module.loadStripe('pk_test_51SAr4qCeJhHlFgkiZS7mzcq8u1wfyjiTfAeoCQFv9Zr0QcuHJ4AAfcoPrSoEId0ZuUiZLvtIJfFIDQZTlpqfhavD001MIp4TUr')
-      );
-      
-      if (!stripe) {
-        throw new Error('Stripe failed to load');
-      }
-
-      // Create line items based on box selection
+      // Box pricing mapping
       const boxPricing = {
-        'android-box-basic': { price: 15000, name: 'Android TV Box Basic' }, // 150 TND in cents
-        'android-box-pro': { price: 25000, name: 'Android TV Box Pro' },     // 250 TND in cents
-        'android-box-ultra': { price: 35000, name: 'Android TV Box Ultra' }  // 350 TND in cents
+        'android-box-basic': { price: 150, name: 'Android TV Box Basic' },
+        'android-box-pro': { price: 250, name: 'Android TV Box Pro' },
+        'android-box-ultra': { price: 350, name: 'Android TV Box Ultra' }
       };
 
       const selectedBox = boxPricing[boxId as keyof typeof boxPricing];
@@ -198,30 +189,8 @@ export default function AndroidBoxes({ language }: AndroidBoxesProps) {
         throw new Error('Product not found');
       }
 
-      // Redirect to Stripe Checkout
-      const { error } = await stripe.redirectToCheckout({
-        lineItems: [
-          {
-            price_data: {
-              currency: 'tnd',
-              product_data: {
-                name: selectedBox.name,
-                description: `${selectedBox.name} - Premium Android TV Box`,
-              },
-              unit_amount: selectedBox.price,
-            },
-            quantity: 1,
-          },
-        ],
-        mode: 'payment',
-        successUrl: `${window.location.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
-        cancelUrl: `${window.location.origin}#cancel`,
-      });
-
-      if (error) {
-        console.error('Stripe checkout error:', error);
-        throw error;
-      }
+      // Use the createCheckoutSession function
+      await createCheckoutSession(boxId, selectedBox.name);
       
     } catch (error) {
       console.error('Error initiating purchase:', error);
